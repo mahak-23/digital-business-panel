@@ -1,15 +1,14 @@
 import React from "react";
 
-//data
-import { groupNumber, ordersData } from "../../data/data";
-
 //style
 import css from "./Orders.module.css";
 
 //child components
 import OrdersPieChart from "../OrdersPieChart/OrdersPieChart";
 
-const Orders = () => {
+const Orders = ({ orders }) => {
+  const totalItems = orders.reduce((sum, item) => sum + Number(item.items || 0), 0);
+
   return (
     <div className={`${css.container} theme-container`}>
       <div className={css.head}>
@@ -18,13 +17,13 @@ const Orders = () => {
       </div>
 
       <div className={`grey-container  ${css.stat}`}>
-        <span>Amout</span>
-        <span>{groupNumber(3662)}</span>
+        <span>Amount</span>
+        <span>${totalItems.toLocaleString()}</span>
       </div>
 
       <div className={css.orders}>
-        {ordersData.map((order, index) => (
-          <div key={index} className={css.order}>
+        {orders.map((order) => (
+          <div key={order.name} className={css.order}>
             <div>
               <span>{order.name}</span>
               <span>{order.change}</span>
@@ -40,7 +39,7 @@ const Orders = () => {
 
       <div className={css.orderChars}>
         <span>Split by orders</span>
-        <OrdersPieChart />
+        <OrdersPieChart orders={orders} />
       </div>
     </div>
   );

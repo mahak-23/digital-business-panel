@@ -9,11 +9,42 @@
     rgba(255, 70, 70, 0.99) 3.47%,
     rgba(255, 114, 70, 0.99) 60.18%
   );
+  color-scheme: light;
+  background: #f4f6fb;
+}
+
+body.light-theme {
+  background: #e5ecf7;
+  color: #111827;
+  --page-top: rgba(255, 255, 255, 0.92);
+  --page-bottom: rgba(244, 246, 251, 1);
+  --page-panel: rgba(255, 255, 255, 0.82);
+  --page-text: #111827;
+  --page-border: rgba(16, 24, 40, 0.08);
+}
+
+body.dark-theme {
+  background: #090d1a;
+  color: #f8fafc;
+  --page-top: rgba(19, 24, 41, 0.96);
+  --page-bottom: rgba(7, 10, 22, 1);
+  --page-panel: rgba(12, 18, 35, 0.92);
+  --page-text: #f8fafc;
+  --page-border: rgba(255, 255, 255, 0.08);
+}
+
+html,
+body,
+#root,
+#dashboard {
+  height: 100%;
+  width: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
+  background: inherit;
 }
 
 * {
@@ -21,13 +52,10 @@ body {
 }
 
 #dashboard {
-  height: 100vh;
-  width: 100vw;
-  background-color: black;
-  color: white;
+  overflow: hidden;
   font-family: "Public Sans", sans-serif;
-  overflow: auto;
 }
+
 
 .theme-container {
   background: rgba(0, 0, 0, 0.59);

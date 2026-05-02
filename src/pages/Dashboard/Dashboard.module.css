@@ -1,72 +1,183 @@
-.container {
+.page {
   width: 100%;
   max-width: 130rem;
-  padding: 0rem 4rem;
-  display: flex;
-  gap: 2rem;
-}
-
-.dashboard {
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.dashboardHead {
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-.dashboardHead > .head {
+.hero {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: flex-end;
   justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem 0 0.5rem;
 }
 
-.head > :nth-child(1) {
-  font-size: 1.5rem;
-  font-family: 500;
+.heroText {
+  max-width: 36rem;
 }
 
-.dashboardHead > select {
-  border: none;
-  background-color: var(--orange-gradient);
-  padding: 10px;
+.eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 128, 93, 0.95);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.lede {
+  margin: 0.65rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--grey);
+}
+
+.periodWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.periodLabel {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.periodSelect {
+  appearance: none;
+  cursor: pointer;
+  min-width: 11rem;
+  padding: 0.55rem 2rem 0.55rem 0.85rem;
+  font: inherit;
+  font-size: 0.85rem;
   font-weight: 500;
-  border-radius: 10px;
-  font-size: 0.8rem;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.45);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='rgba(255,255,255,0.8)' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E"),
+    linear-gradient(
+      145deg,
+      rgba(255, 70, 70, 0.28),
+      rgba(255, 114, 70, 0.18)
+    );
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 0.65rem center, 0 0;
 }
 
-.cards {
-  display: flex;
-  justify-content: space-between;
+.periodSelect:focus {
+  outline: 2px solid rgba(255, 128, 93, 0.45);
+  outline-offset: 2px;
+}
+
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
   gap: 1rem;
 }
 
-.cardHead > :nth-child(1) {
-  color: aliceblue;
+.kpiCard {
+  padding: 1.15rem 1.25rem;
+  border-radius: 16px;
+  background: linear-gradient(
+    155deg,
+    rgba(22, 22, 30, 0.95) 0%,
+    rgba(12, 12, 18, 0.88) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
-.cardHead > :nth-child(2) {
-  margin-left: 1rem;
-  font-size: 0.8rem;
+.kpiCard:hover {
+  border-color: rgba(255, 128, 93, 0.22);
+  transform: translateY(-2px);
+}
+
+.kpiHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.kpiTitle {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(240, 248, 255, 0.92);
+}
+
+.kpiDeltaPos {
+  font-size: 0.78rem;
+  font-weight: 600;
   color: var(--green);
 }
-.cardAmount > :nth-child(1) {
-  font-size: 0.9rem;
-  color: aliceblue;
-  position: relative;
+
+.kpiDeltaNeg {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #ff7a7a;
 }
 
-.cardAmount > :nth-child(2) {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-left: 8px;
+.kpiAmount {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
 }
 
-.durationButton > select {
-  padding: 0.4rem;
-  border-radius: 10px;
+.kpiCurrency {
+  font-size: 0.95rem;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+.lower {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.statsColumn {
+  flex: 1 1 min(100%, 42rem);
+  min-width: 0;
+}
+
+.ordersColumn {
+  flex: 0 1 22rem;
+  min-width: min(100%, 18rem);
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 0 1.25rem 2rem;
+  }
+
+  .lower {
+    flex-direction: column;
+  }
+
+  .ordersColumn {
+    flex: 1 1 auto;
+    width: 100%;
+  }
 }

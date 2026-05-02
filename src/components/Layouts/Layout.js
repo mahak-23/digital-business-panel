@@ -1,42 +1,36 @@
 import React from "react";
 import moment from "moment/moment";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-
-//style
-import { BiSearch } from "react-icons/bi";
 import css from "./Layout.module.css";
-
-//child components
 import Sidebar from "./Sidebar/Sidebar";
+
+const titleMap = {
+  dashboard: "Dashboard",
+  calender: "Calendar",
+  board: "Board",
+  users: "Users",
+};
 
 const Layout = () => {
   const { pathname } = useLocation();
+  const routeKey = pathname.replace(/^\//, "") || "dashboard";
+  const pageTitle = titleMap[routeKey] ?? "Dashboard";
+
   return (
     <div className={css.container}>
       <Sidebar />
       {pathname === "/" && <Navigate to="/dashboard" />}
 
       <div className={css.dashboard}>
-        <div className={css.topBaseGradient}>
-          <div className="gradient-red"></div>
-          <div className="gradient-orange"></div>
-          <div className="gradient-blue"></div>
-        </div>
-
         <div className={css.header}>
-          <span>{moment().format("dddd, Do MMM YYYY")}</span>
-          <div className={css.searchBar}>
-            <BiSearch size={20} />
-            <input type="text" placeholder="Enter here" />
+          <div className={css.topBaseGradient}>
+            <div className="gradient-red"></div>
+            <div className="gradient-orange"></div>
+            <div className="gradient-blue"></div>
           </div>
-          <div className={css.profile}>
-            <img src="./profile.jpeg" alt="" />
 
-            <div className={css.details}>
-              <span>Mahak Kushwaha</span>
-              <span>mahak1923k@gmail.com</span>
-            </div>
-          </div>
+          <span className={css.pageTitle}>{pageTitle}</span>
+          <span className={css.date}>{moment().format("dddd, Do MMM YYYY")}</span>
         </div>
         <div className={css.content}>
           <Outlet />

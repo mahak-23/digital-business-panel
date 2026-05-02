@@ -1,55 +1,63 @@
-import React, { useState } from "react";
-import css from "./AddCardModal.module.css";
-import Rodal from "rodal";
+import React, { useState, useEffect } from "react";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  Button,
+  Box,
+} from "@mui/material";
 
 const AddCardModal = ({ visible, onClose, handleCardAdd }) => {
-  const customStyle = {
-    background: "rgb(58 58 58)",
-    padding: "10px",
-    width: "90%",
-    // top: "-rem",
-    height: "fit-content",
-    maxWidth: "40rem",
-    marginTop: "1rem",
-  };
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
+
+  useEffect(() => {
+    if (!visible) {
+      setTitle("");
+      setDetail("");
+    }
+  }, [visible]);
+
+  const canSave = title.trim() !== "" || detail.trim() !== "";
+
   return (
-    <Rodal visible={visible} onClose={onClose} customStyles={customStyle}>
-      <div className={css.container}>
-        <div>
-          <span className={css.label}>Card Title</span>
-          <input
-            type="text"
-            className={css.input}
+    <Dialog open={visible} onClose={onClose} maxWidth="sm" fullWidth>
+      <DialogTitle>Add a new card</DialogTitle>
+      <DialogContent>
+        <Box component="form" sx={{ display: "grid", gap: 2, mt: 1 }}>
+          <TextField
+            label="Card title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(event) => setTitle(event.target.value)}
+            fullWidth
           />
-        </div>
-
-        <div>
-          <span className={css.label}> Detail</span>
-          <textarea
-            rows={5}
-            className="css.input"
+          <TextField
+            label="Detail"
             value={detail}
-            onChange={(e) => setDetail(e.target.value)}
+            onChange={(event) => setDetail(event.target.value)}
+            fullWidth
+            multiline
+            minRows={4}
           />
-        </div>
-
-        <button
-          className={css.saveButton}
-          disabled={title === "" && detail === ""}
+        </Box>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose}>Cancel</Button>
+        <Button
+          variant="contained"
+          disabled={!canSave}
           onClick={() => {
-            handleCardAdd(title, detail);
-            setDetail("");
+            handleCardAdd(title.trim(), detail.trim());
             setTitle("");
+            setDetail("");
           }}
         >
-          Add
-        </button>
-      </div>
-    </Rodal>
+          Add card
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 };
 

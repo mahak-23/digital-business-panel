@@ -4,13 +4,10 @@ import React from "react";
 import css from "./Statistics.module.css";
 import { BsArrowUpShort } from "react-icons/bs";
 
-//data
-import { groupNumber } from "../../data/data";
-
 //child components
 import StatisticalChart from "../StatisticalChart/StatisticalChart";
 
-const Statistics = () => {
+const Statistics = ({ stats, chart }) => {
   return (
     <div className={`${css.container} theme-container`}>
       <span className={css.title}>Overview statistics</span>
@@ -22,28 +19,28 @@ const Statistics = () => {
           </div>
 
           <div className={css.card}>
-            <span>Top item this month </span>
-            <span>Office comps</span>
+            <span>Top item this month</span>
+            <span>{stats.topItem}</span>
           </div>
         </div>
 
         <div className={css.card}>
           <span>Items</span>
-          <span> $ {groupNumber(74.00003)}</span>
+          <span>${stats.items.toLocaleString()}</span>
         </div>
 
         <div className={css.card}>
           <span>Profit</span>
-          <span> $ {groupNumber(37000)}</span>
+          <span>${stats.profit.toLocaleString()}</span>
         </div>
 
         <div className={css.card}>
           <span>Daily Average</span>
-          <span> ${groupNumber(57348)}</span>
+          <span>${stats.dailyAverage.toLocaleString()}</span>
         </div>
       </div>
 
-      <StatisticalChart />
+      <StatisticalChart categories={chart.categories} series={chart.series} />
     </div>
   );
 };
