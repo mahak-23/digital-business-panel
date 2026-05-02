@@ -1,46 +1,76 @@
 # Digital Business Dashboard
 
-Welcome to the Digital Business Dashboard project!
+A modern React dashboard application built with Vite, React 19, Redux Toolkit, Material UI, and FullCalendar.
 
-This project includes a dashboard application built with React, showcasing various components such as statistics, orders, calendar, and data grid.
+Use of this application includes monitoring business metrics, managing operations with a kanban board, coordinating events on a calendar, and maintaining user data in a responsive data grid.
 
-## Live Demo
+Live demo: [https://digital-business-dashboard.netlify.app/](https://digital-business-dashboard.netlify.app/)
 
-Check out the live demo [here](https://digital-business-dashboard.netlify.app/).
+The app includes a responsive sidebar, dashboard overview, calendar view, kanban board, and data grid for managing users.
 
-## Features
 
-### 1. Dashboard
+![Dashboard screenshot](README-screenshot.png)
 
-- Provides an overview of statistics and orders.
-- Displays various cards with important business metrics.
-- Includes a chart for visualizing statistical data.
+## Key Features
 
-### 2. Calendar
+- **Responsive layout** with persistent sidebar and sticky header
+- **Dashboard overview** with KPI cards, chart widgets, and filter range support
+- **FullCalendar integration** for scheduling, event creation, and interaction
+- **Kanban board** with drag-and-drop card movement and column reordering
+- **Data grid** for user management with add/edit/delete actions
+- **Material UI styling** and consistent dark theme design
+- **Sidebar collapse/expand** with icon-only compact mode
+- **Vite-powered dev experience** for fast builds and hot reload
 
-- Allows users to schedule and manage events.
-- Supports adding, editing, and deleting events.
-- Provides a visual representation of events using a calendar view.
+## Getting Started
 
-### 3. Board
+Install dependencies:
 
-- Offers a kanban board for managing tasks and projects.
-- Supports creating, moving, and updating tasks across different columns.
-- Provides an intuitive drag-and-drop interface for task management.
+```bash
+npm install
+```
 
-### 4. Data Grid
+Run the development server:
 
-- Displays user data in a tabular format.
-- Allows users to view and interact with data efficiently.
-- Supports pagination and lazy loading for handling large datasets.
+```bash
+npm run dev
+```
 
-![image](https://github.com/mahak-23/digital-business-panel/assets/107416996/bd9b1a79-fc5a-433e-8070-6a1eb76b619b)
+Build for production:
 
-## Dependencies
+```bash
+npm run build
+```
 
-- `@asseinfo/react-kanban`: Used for implementing a kanban board.
-- `@fullcalendar/react`: Used for displaying a calendar.
-- `echarts-for-react`: Used for rendering charts.
-- `material-react-table`: Used for creating tables with material design.
-- `react-icons`: Used for including icons in the application.
-- `react-router-dom`: Used for routing within the application.
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+## Main Dependencies
+
+- `react` / `react-dom` — core React library
+- `react-router-dom` — routing and nested layout support
+- `@reduxjs/toolkit` / `react-redux` — app state management
+- `@mui/material` / `@mui/icons-material` — UI components and icons
+- `@dnd-kit/core`, `@dnd-kit/sortable`, `@dnd-kit/utilities` — drag-and-drop kanban interactions
+- `@fullcalendar/react`, `@fullcalendar/core`, `@fullcalendar/daygrid`, `@fullcalendar/timegrid`, `@fullcalendar/interaction` — calendar display and event handling
+- `echarts` / `echarts-for-react` — chart rendering
+- `moment` — date formatting
+- `react-icons` — additional iconography
+
+## Project Structure
+
+- `src/App.jsx` — app routes and theme provider
+- `src/components/Layouts` — layout, sidebar, and shared page structure
+- `src/components/KanbanBoard` — kanban board and card components
+- `src/pages` — dashboard, calendar, board, and data grid pages
+- `src/features` — Redux slices for board, dashboard, sidebar, and users
+- `src/data` — seed data and demo content
+
+## Notes
+
+- The app uses a fixed dark theme and a compact sidebar mode for better workspace focus.
+- Kanban card colors and dashboard range filters are implemented in the app logic.
+- The current build is optimized for local development on Vite.
